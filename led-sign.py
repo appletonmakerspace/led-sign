@@ -34,7 +34,7 @@ def update_sign():
 
             try:
                 # fetch new-line separated plain text from Interweb
-                payload = urllib2.urlopen("https://server.appletonmakerspace.org/beta-brite-message-file.txt").read()
+                payload = urllib2.urlopen("https://server.appletonmakerspace.org/wiki/doku.php?id=sign_text&do=export_raw").read()
             except Exception:
                 payload = 'HALP! Internet down!?'
 
