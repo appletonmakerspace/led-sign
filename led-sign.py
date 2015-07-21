@@ -10,7 +10,7 @@ def update_sign():
         sign.clear_memory()
 
         # create an empty alphasign.String
-        alpha_str = alphasign.String()
+        alpha_str = alphasign.String(size=64)
 
         # create a single alphasign.Text object with a placeholder for our alphasign.String
         alpha_txt = alphasign.Text(alpha_str.call(),mode=alphasign.modes.COMPRESSED_ROTATE)
@@ -35,8 +35,8 @@ def update_sign():
             try:
                 # fetch new-line separated plain text from Interweb
                 payload = urllib2.urlopen("https://server.appletonmakerspace.org/wiki/doku.php?id=sign_text&do=export_raw").read()
-            except Exception:
-                payload = 'HALP! Internet down!?'
+            except Exception as e:
+                payload = 'net err: '+str(e)
 
             # alert bystanders with beep when we update
             if payload != last_payload:
